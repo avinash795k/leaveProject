@@ -1,0 +1,14 @@
+{% extends 'userpanel/base.html' %}
+{% block title %}Leave Request{% endblock %}
+{% block body %}
+    {% if form.errors %}{{ form.errors }}{% endif %}
+
+
+    <form method="post" action="{% url 'leaveapp:leave_request'%}">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit">
+    </form>
+{% endblock %}
