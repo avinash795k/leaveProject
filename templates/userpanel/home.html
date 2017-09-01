@@ -1,0 +1,59 @@
+{% extends 'userpanel/base.html' %}
+{% block title %}Home{% endblock %}
+{% block body %}
+    {% if not leave_request %}
+        NO NOTIFICATIONS
+    {% else %}
+        {% for req in leave_request %}
+            <h5>Request for {{ req.leavenotifier_type }}</h5>
+            <form method="post" action="{% url 'userpanel:home'%}">
+            {% csrf_token %}
+            <table>
+            <tr>
+                <td>Employee:</td>
+                <td>{{ req.leavenotifier_leave.leave_emp }}</td>
+            </tr>
+            <tr>
+                <td>Date of Apply:</td>
+                <td>{{ req.leavenotifier_leave.cur_date }}</td>
+            </tr>
+            <tr>
+                <td>Leave Type:</td>
+                <td>{{ req.leavenotifier_leave.leave_type }}</td>
+            </tr>
+            {% if req.leavenotifier_leave.station_leave %}
+            <tr>
+                <td>Station Leave:</td>
+                <td>True</td>
+            </tr>
+            <tr>
+                <td>Leave Address:</td>
+                <td>{{ req.leavenotifier_leave.station_add }}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td>From:</td>
+                <td>{{ req.leavenotifier_leave.from_date }}</td>
+            </tr>
+            <tr>
+                <td>To:</td>
+                <td>{{ req.leavenotifier_leave.to_date }}</td>
+            </tr>
+            <tr>
+                <td>Purpose:</td>
+                <td>{{ req.leavenotifier_leave.purpose }}</td>
+            </tr>
+            <tr>
+                <td>Remarks:</td>
+                <td><input type="" name="remarks" /></td>
+            </tr>
+            </table>
+            <input type="hidden" name="request_id" value={{ req.id }}>
+            <input type="submit" name="submit" value="Accept">
+            <input type="submit" name="submit" value="Reject">
+            </form>
+            <br>
+            <br>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

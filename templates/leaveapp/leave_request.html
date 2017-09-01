@@ -2,13 +2,13 @@
 {% block title %}Leave Request{% endblock %}
 {% block body %}
     {% if form.errors %}{{ form.errors }}{% endif %}
-
-
+    <center><h2><u>Leave Form</u></h2></center>
+    {% if error %}{{ error }}{% endif %}
     <form method="post" action="{% url 'leaveapp:leave_request'%}">
         {% csrf_token %}
         <table>
             {{ form.as_table }}
         </table>
-        <input type="submit">
+        <input type="submit" value="Apply">
     </form>
 {% endblock %}

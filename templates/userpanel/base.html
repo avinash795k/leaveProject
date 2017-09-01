@@ -63,8 +63,8 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="{% url 'userpanel:home' %}">Home</a></li>
         <li><a href="{% url 'leaveapp:leave_request' %}">Leave Request</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="{% url 'leaveapp:leave_status' %}">Leave Status</a></li>
+        <li><a href="{% url 'leaveapp:leave_balance' %}">Leave Balance</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{% url 'userpanel:logout_user' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>

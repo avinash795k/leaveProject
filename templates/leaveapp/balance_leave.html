@@ -1,0 +1,24 @@
+{% extends 'userpanel/base.html' %}
+{% block title %}Leave Balance{% endblock %}
+{% block body %}
+    <center><h2><u>Leave Balance</u></h2></center>
+    <table>
+    <tr>
+        <td>CL</td>
+        <td>RH</td>
+        <td>SCL</td>
+        <td>EL</td>
+        <td>COL</td>
+        <td>VL</td>
+    </tr>
+    <tr>
+        <td>{{ remaining_lv.leaveremaining_CL }}</td>
+        <td>{{ remaining_lv.leaveremaining_RH }}</td>
+        <td>{{ remaining_lv.leaveremaining_SCL }}</td>
+        <td>{{ remaining_lv.leaveremaining_EL }}</td>
+        <td>{{ remaining_lv.leaveremaining_COL }}</td>
+        <td>{{ remaining_lv.leaveremaining_VL }}</td>
+    </tr>
+    </table>
+
+{% endblock %}

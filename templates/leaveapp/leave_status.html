@@ -1,0 +1,72 @@
+{% extends 'userpanel/base.html' %}
+{% block title %}Leave Status{% endblock %}
+{% block body %}
+    <center><h2><u>Leave Status</u></h2></center>
+    {% if not leave_form %}
+        NO LEAVE APPLIED
+    {% else %}
+        {% for form in leave_form %}
+            <table>
+            <tr>
+                <td>Date of Apply:</td>
+                <td>{{ form.leavestatus_leave.cur_date }}</td>
+            </tr>
+            <tr>
+                <td>Leave Type:</td>
+                <td>{{ form.leavestatus_leave.leave_type }}</td>
+            </tr>
+            {% if form.leavestatus_leave.station_leave %}
+            <tr>
+                <td>Station Leave:</td>
+                <td>True</td>
+            </tr>
+            <tr>
+                <td>Leave Address:</td>
+                <td>{{ form.leavestatus_leave.station_add }}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td>From:</td>
+                <td>{{ form.leavestatus_leave.from_date }}</td>
+            </tr>
+            <tr>
+                <td>To:</td>
+                <td>{{ form.leavestatus_leave.to_date }}</td>
+            </tr>
+            <tr>
+                <td>Purpose:</td>
+                <td>{{ form.leavestatus_leave.purpose }}</td>
+            </tr>
+            {% if form.leavestatus_emp.employeetype.type_type == 'Faculty' %}
+            <tr>
+                <td>Academic Duty:</td>
+                <td>{{ form.leavestatus_leave.acad_duty }}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td>Administrative Duty:</td>
+                <td>{{ form.leavestatus_leave.administrative_duty }}</td>
+            </tr>
+            {% if form.leavestatus_leave.remarks != '' %}
+            <tr>
+                <td>Remarks:</td>
+                <td>{{ form.leavestatus_leave.remarks }}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td>Status:</td>
+                {% if form.leavestatus_leave.status == False and form.leavestatus_status == False %}
+                <td>Pending</td>
+                {% elif form.leavestatus_leave.status == True and form.leavestatus_status == False %}
+                <td>Rejected</td>
+                {% else %}
+                <td>Accepted</td>
+                {% endif %}
+            </tr>
+            </table>
+            <br>
+            <br>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}
