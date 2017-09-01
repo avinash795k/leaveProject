@@ -49,7 +49,11 @@
             </tr>
             </table>
             <input type="hidden" name="request_id" value={{ req.id }}>
-            <input type="submit" name="submit" value="Accept">
+            {% if req.leavenotifier_type == 'forwarding' %}
+                <input type="submit" name="submit" value="Forward">
+            {% else %}
+                <input type="submit" name="submit" value="Accept">
+            {% endif %}
             <input type="submit" name="submit" value="Reject">
             </form>
             <br>

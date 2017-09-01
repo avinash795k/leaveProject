@@ -45,7 +45,7 @@ def home(request):
     if request.method=='POST':
         r_id=request.POST.get('request_id')
         process_leave = LeaveNotifier.objects.get(id=r_id)
-        if request.POST.get('submit') == 'Accept':
+        if request.POST.get('submit') == 'Accept' or request.POST.get('submit') == 'Forward':
             if process_leave.leavenotifier_type == 'acad':
                 process_leave.leavenotifier_leave.acad_tag = True
                 process_leave.leavenotifier_leave.remarks = "[Academic Duty Accepted by "+str(request.user)+"] "+request.POST.get('remarks')
